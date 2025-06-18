@@ -3,18 +3,16 @@ import pandas as pd
 from datetime import datetime
 import os
 
-# Definir localização (ex: São Paulo)
+# Localização (ex: São Paulo)
 latitude = -23.55
 longitude = -46.63
 
-# Endpoint da API Open-Meteo
+# API Open-Meteo
 url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,weathercode&timezone=America%2FSao_Paulo"
 
-# Fazer requisição
 resposta = requests.get(url)
 dados = resposta.json()
 
-# Organizar dados
 registro = {
     "data_hora": datetime.now().isoformat(),
     "temperatura": dados["current"]["temperature_2m"],
